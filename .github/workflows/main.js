@@ -1,22 +1,22 @@
-import { getLista, limpaLista } from "./lista";
+import { getLista, limpaLista } from "./lista.js";
+const olItens      = document.querySelector("#itens");
+const pEntrada     = document.querySelector("#entrada");
+const btnAdicionar = document.querySelector("#adicionar");
+const btnLimpar    = document.querySelector("#limpar");
 
-import (getLista)
-const olItens= document.querySelector("#itens");
-const pEntrada= document.querySelector("#entrada");
-const bntAdicionar= document.querySelector("#Adicionar");
-const bntLimpar= document.querySelector("#Limpar");
+function atualizarLista() {
+  olItens.innerHTML = "";
+  const lista = getLista();
+  for (let i = 0; i < lista.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = lista[i];
+    olItens.appendChild(li);
+  }
+}
+atualizarLista();
+function limparItensDeLista() {
+  limpaLista();
+  atualizarLista();
+}
 
-bntLimpar.addEventListener('click', limpaItensDeLista);
-function limpaItensDeLista(){
-    limpaLista();
-    atualizarLista();
-}
-function atualizarLista(){
-    olItens.innerHTML = " ";
-    let lista = getLista();
-    for (let i = 0; i<lista.length; i++){
-        const li= document.createElement('li');
-        li.textContent = lista[i];
-        olItens.appendChild(li);
-    }
-}
+btnLimpar.addEventListener("click", limparItensDeLista);
